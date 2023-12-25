@@ -58,18 +58,19 @@ const Layout = ({ children, location }) => {
             Skip to Content
           </a>
 
-          {isHome ? (
+          {isLoading && isHome ? (
+            <Loader finishLoading={() => setIsLoading(false)} />
+          ) : (
             <StyledContent>
               <Nav isHome={isHome} />
               <Social isHome={isHome} />
               <Email isHome={isHome} />
-
               <div id="content">
                 {children}
                 <Footer />
               </div>
             </StyledContent>
-          ) : null}
+          )}
         </ThemeProvider>
       </div>
     </>
