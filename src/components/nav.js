@@ -148,6 +148,12 @@ const StyledLinks = styled.div`
     margin-left: 15px;
     font-size: var(--fz-xs);
   }
+
+  .portfolio-button {
+    ${({ theme }) => theme.mixins.smallButton};
+    margin-left: 15px;
+    font-size: var(--fz-xs);
+  }
 `;
 
 const Nav = ({ isHome }) => {
@@ -185,18 +191,12 @@ const Nav = ({ isHome }) => {
     <div className="logo" tabIndex="-1">
       {isHome ? (
         <a href="/" aria-label="home">
-          <div className="hex-container">
-            <IconHex />
-          </div>
           <div className="logo-container">
             <IconLogo />
           </div>
         </a>
       ) : (
         <Link to="/" aria-label="home">
-          <div className="hex-container">
-            <IconHex />
-          </div>
           <div className="logo-container">
             <IconLogo />
           </div>
@@ -208,6 +208,12 @@ const Nav = ({ isHome }) => {
   const ResumeLink = (
     <a className="resume-button" href="/resume.pdf" target="_blank" rel="noopener noreferrer">
       Resume
+    </a>
+  );
+
+  const PortfolioLink = (
+    <a className="portfolio-button" href="/portfolio.pdf" target="_blank" rel="noopener noreferrer">
+      Portfolio
     </a>
   );
 
@@ -228,6 +234,7 @@ const Nav = ({ isHome }) => {
                   ))}
               </ol>
               <div>{ResumeLink}</div>
+              <div>{PortfolioLink}</div>
             </StyledLinks>
 
             <Menu />
@@ -262,6 +269,16 @@ const Nav = ({ isHome }) => {
                   <CSSTransition classNames={fadeDownClass} timeout={timeout}>
                     <div style={{ transitionDelay: `${isHome ? navLinks.length * 100 : 0}ms` }}>
                       {ResumeLink}
+                    </div>
+                  </CSSTransition>
+                )}
+              </TransitionGroup>
+
+              <TransitionGroup component={null}>
+                {isMounted && (
+                  <CSSTransition classNames={fadeDownClass} timeout={timeout}>
+                    <div style={{ transitionDelay: `${isHome ? navLinks.length * 100 : 0}ms` }}>
+                      {PortfolioLink}
                     </div>
                   </CSSTransition>
                 )}

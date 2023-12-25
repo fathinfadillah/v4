@@ -153,6 +153,13 @@ const StyledSidebar = styled.aside`
     margin: 10% auto 0;
     width: max-content;
   }
+
+  .portfolio-link {
+    ${({ theme }) => theme.mixins.bigButton};
+    padding: 18px 50px;
+    margin: 10% auto 0;
+    width: max-content;
+  }
 `;
 
 const Menu = () => {
@@ -268,6 +275,10 @@ const Menu = () => {
 
             <a href="/resume.pdf" className="resume-link">
               Resume
+            </a>
+
+            <a href="/portfolio.pdf" className="portfolio-link">
+              Portfolio
             </a>
           </nav>
         </StyledSidebar>
