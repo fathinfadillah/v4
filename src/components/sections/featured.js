@@ -266,7 +266,8 @@ const StyledProject = styled.li`
         outline: 0;
 
         &:before,
-        .img {
+        .img,
+        .video {
           background: transparent;
           filter: none;
         }
@@ -288,15 +289,21 @@ const StyledProject = styled.li`
       }
     }
 
-    .img {
+    .img,
+    .video {
       border-radius: var(--border-radius);
       mix-blend-mode: multiply;
       filter: grayscale(100%) contrast(1) brightness(90%);
 
-      @media (max-width: 768px) {
-        object-fit: cover;
-        width: auto;
-        height: 100%;
+      /* Ensuring both image and video behave similarly */
+      object-fit: cover; /* This ensures the media fills the container */
+      width: 100%;
+      height: 100%; /* Makes sure the media takes the full height */
+    }
+
+    @media (max-width: 768px) {
+      .img,
+      .video {
         filter: grayscale(100%) contrast(1) brightness(50%);
       }
     }
@@ -314,6 +321,9 @@ const Featured = () => {
           node {
             frontmatter {
               title
+              video {
+                publicURL
+              }
               cover {
                 childImageSharp {
                   gatsbyImageData(width: 700, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
@@ -355,7 +365,7 @@ const Featured = () => {
         {featuredProjects &&
           featuredProjects.map(({ node }, i) => {
             const { frontmatter, html } = node;
-            const { external, title, tech, github, cover, cta } = frontmatter;
+            const { external, title, tech, github, cover, cta, video } = frontmatter;
             const image = getImage(cover);
 
             return (
@@ -402,8 +412,24 @@ const Featured = () => {
                 </div>
 
                 <div className="project-image">
-                  <a href={external ? external : github ? github : '#'}>
-                    <GatsbyImage image={image} alt={title} className="img" />
+                  <a href={external || github || '#'}>
+                    {frontmatter.video ? (
+                      <video
+                        src={frontmatter.video.publicURL}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="video"
+                        alt={title}
+                        onError={e => {
+                          e.target.style.display = 'none'; // Hide the video if it fails to load
+                          alert('Video failed to load.');
+                        }}
+                      />
+                    ) : (
+                      <GatsbyImage image={image} alt={title} className="img" />
+                    )}
                   </a>
                 </div>
               </StyledProject>

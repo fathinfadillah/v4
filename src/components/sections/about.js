@@ -135,12 +135,7 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-            Hi, my name is Muhammad Fathin Fadillah, 7 years in the creative industries, starting from junior high school. 
-            Have knowledge in the field of social media. I like to think creatively and want to try new things in this creative 
-            field and information techology field. Have the ability to run Microsoft Office, Adobe Premiere Pro CC, Adobe Photoshop CC, 
-            Adobe After Effects CC and Adobe Illustrator. Then I studied programming languages in college, I majored in informatics management 
-            here I learned programming languages C, C# Desktop, Java Desktop, PHP, C# Web/ASP.NET, Java Web/Spring Boot, and Java Android. 
-            With 3+ years experience.
+            Hi, my name is Muhammad Fathin Fadillah. I am a professional with over 3 years of experience in software development and a solid foundation in information technology, holding a Diploma in Information Management and a Bachelor's degree in Computer Science. I specialize in various programming languages, including C, C# (Desktop & Web/ASP.NET), Java (Desktop & Android), PHP, and Java Web (Spring Boot). Currently, I work as a Microsoft D365 Technical Consultant at PT Astragraphia Information Technology. In addition to my technical expertise, I am also experienced in the creative field, particularly in social media management and digital content production, using tools such as Adobe Premiere Pro, Photoshop, After Effects, Illustrator, and Microsoft Office. I am always eager to explore new opportunities that allow me to combine creativity with technology.
             </p>
 
             <p>Here are a few skills I’ve been working with recently:</p>
